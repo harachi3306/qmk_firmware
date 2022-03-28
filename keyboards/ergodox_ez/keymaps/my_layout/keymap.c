@@ -1,4 +1,4 @@
-// cd /Users/y-harachi/home/qmk_firmware && make keyboard=ergodox_ez keymap=my_layout
+// cd ~/git/qmk_firmware && make keyboard=ergodox_ez keymap=my_layout
 // Teensy を使う
 #include QMK_KEYBOARD_H
 #include "version.h"
@@ -42,6 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 | Space|Enter |------|       |------|Back    |Enter |
  *                                 |      |      |Del   |       |Del   |Space   |/L1   |
  *                                 `--------------------'       `----------------------'
+ * KC_CAPSLOCK
  */
 [BASE] = LAYOUT_ergodox(
   // left hand
@@ -66,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 1: Symbol Layer
  * 
  * ,---------------------------------------------------.           ,--------------------------------------------------.
- * |Esc      |  F2  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |^~      |
+ * |Esc      |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |^~      |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
  * |         |   !  |   @  |   {  |   }  |   |  |      |           |VolUp |Home  |PgDn  |PgUp  |End   |@     |        |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -86,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SYMB] = LAYOUT_ergodox(
   // left hand
-  KC_ESC,    KC_F2,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
+  KC_ESC,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
   KC_TRNS, KC_EXLM, JA_AT,   LSFT(JA_LBRC), LSFT(JA_RBRC), LSFT(JA_ENVL), KC_TRNS,
   // KC_TRNS, KC_HASH, KC_DLR,  JA_LBRC, JA_RBRC, KC_GRV,
   KC_TRNS, KC_TRNS, KC_TRNS,  JA_LBRC, JA_RBRC, KC_GRV,
@@ -103,18 +104,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   LSFT(LCTL(KC_POWER)), KC_TRNS,
   KC_TRNS,
-  KC_TRNS, KC_TRNS, LSFT(KC_ENT)
+  KC_TRNS, KC_TRNS, KC_ENT
 ),
 /* Keymap 2: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |Mute  |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |VolUp |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |VolUp |      |      |WhUp  |      |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |------|           |------|MsLeft|MsDown|MsUp  |MsRght| Rclk |        |
  * |--------+------+------+------+------+------|      |           |VolDn |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |WhDown|      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -138,9 +139,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       KC_TRNS, KC_TRNS, KC_TRNS,
   // right hand
   KC_MUTE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_VOLU, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_VOLU, KC_TRNS, KC_TRNS, KC_WH_D, KC_TRNS, KC_TRNS, KC_TRNS,
            KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN2, KC_TRNS,
-  KC_VOLD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_VOLD, KC_TRNS, KC_TRNS, KC_WH_U, KC_TRNS, KC_TRNS, KC_TRNS,
                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   LSFT(LCTL(KC_POWER)), KC_TRNS,
   KC_TRNS,
